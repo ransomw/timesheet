@@ -1,4 +1,13 @@
 *.pyc
 *~
+*jar
 
 projects.list
+
+timesheet-server/pom.xml
+timesheet-server/lib
+timesheet-server/classes
+timesheet-server/native
+timesheet-server/.lein-failures
+timesheet-server/checkouts
+timesheet-server/.lein-deps-sum
