@@ -8,6 +8,7 @@
 			]
 			;; :exclusions [org.clojure/java.jdbc]]
 			;; [org.clojure/java.jdbc "0.1.1"]
+			[lobos "1.0.0-beta1"]
 			[org.xerial/sqlite-jdbc "3.7.2"]
 			]
 			:plugins [[lein-ring "0.7.1"]]

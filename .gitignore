@@ -12,3 +12,4 @@ timesheet-server/.lein-failures
 timesheet-server/checkouts
 timesheet-server/.lein-deps-sum
 timesheet-server/.lein-plugins
+timesheet-server/.lobos_stash.clj
