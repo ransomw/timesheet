@@ -2,7 +2,7 @@
 ;; 		(:use [clojure.java.jdbc])
 		(defproject timesheet-server "1.0.0-SNAPSHOT"
 			:description "timesheet webapp"
-			:dependencies [[org.clojure/clojure "1.4.0"]
+			:dependencies [[org.clojure/clojure "1.5.0"]
 			[compojure "1.1.6"]
 			[korma "0.3.0-RC5"
 			]
