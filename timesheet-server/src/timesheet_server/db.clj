@@ -7,7 +7,6 @@
   (:require [clojure.string :as string])
   )
 
-
 ;; (def db
 ;;   {:classname   "org.sqlite.JDBC"
 ;;    :subprotocol "sqlite"
@@ -23,11 +22,11 @@
 (lcore/create
  (ls/table :entry
            (ls/integer :id :primary-key)
-           (ls/varchar :date 10)
-           (ls/varchar :time 10)
+           (ls/date :date)
+           (ls/real :time)
            (ls/varchar :project 20)
            (ls/varchar :category 20)
-           (ls/varchar :comment 1000)))
+           (ls/text :comment)))
 
 (defdb korma-db db)
 
@@ -56,8 +55,7 @@
                              :time entry-time
                              :project entry-project
                              :category entry-category
-                             :comment (format "%s" entry-comment) }))
-
+                             :comment (string/join "\n" entry-comment) }))
       )))
 
 (defn store-text-file-date-entry [date-entry]
