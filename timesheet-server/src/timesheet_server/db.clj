@@ -19,7 +19,7 @@
 
 (lconn/open-global db)
 
-(lcore/create
+(def entry-table-def
  (ls/table :entry
            (ls/integer :id :primary-key)
            (ls/date :date)
@@ -28,15 +28,23 @@
            (ls/varchar :category 20)
            (ls/text :comment)))
 
+(lcore/create entry-table-def)
+
 (defdb korma-db db)
 
 (declare entry)
+
+(defn entity-fields-from-table-def
+  [ent table-def]
+  (let [col-names (map (fn [col-def] (first col-def))
+                       (rest (get table-def :columns)))]
+    (apply entity-fields (conj col-names ent))))
 
 (defentity entry
 	;; (pk :id)
 	;; (table :entry)
 	;; (database db)
-	(entity-fields :date :time :project :category :comment)
+	(entity-fields-from-table-def entry-table-def)
 	)
 
 ;; (insert entry (values {:date "entry-date"
