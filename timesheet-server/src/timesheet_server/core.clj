@@ -50,11 +50,6 @@
 ;; 											:category "entry-category"
 ;; 											:comment "entry-comment"}))
 
-(def timesheet-text-file (slurp "/tmp/timesheet.txt"))
-
-(def text-file-date-entries (filter (fn [entry] (not (= entry "")))
-	(string/split (get (string/split timesheet-text-file #"\n\f\f\n") 0 nil) #"\f")))
-
 (defn store-text-file-entry [entry-date text-file-entry]
 	(let [split-entry (string/split text-file-entry #"\n")]
 		(let [entry-time (first split-entry)
@@ -77,8 +72,16 @@
 									 (store-text-file-entry entry-date text-file-entry))
 						)))
 
-(doseq [text-file-date-entry text-file-date-entries]
-			 (store-text-file-date-entry text-file-date-entry ))
+(defn load-text-file [text-file-path]
+	(let [timesheet-text-file (slurp text-file-path)]
+		(let [text-file-date-entries (filter (fn [entry] (not (= entry "")))
+			     (string/split (get
+			       (string/split timesheet-text-file #"\n\f\f\n") 0 nil) #"\f"))]
+		  (doseq [text-file-date-entry text-file-date-entries]
+						 (store-text-file-date-entry text-file-date-entry ))
+			)))
+
+(load-text-file "/tmp/timesheet.txt")
 
 (defroutes app
 	(GET "/" [] "<h1>Hello World</h1>")
