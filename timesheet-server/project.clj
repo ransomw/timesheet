@@ -11,6 +11,7 @@
 			[lobos "1.0.0-beta1"]
 			[org.xerial/sqlite-jdbc "3.7.2"]
 			[org.clojure/tools.nrepl "0.2.3"]
+      [cheshire "5.3.1"]
 			]
 			:plugins [[lein-ring "0.8.10"]]
 			:ring {:handler timesheet-server.core/app

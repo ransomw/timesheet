@@ -84,3 +84,6 @@
 		  (doseq [text-file-date-entry text-file-date-entries]
         (store-text-file-date-entry text-file-date-entry ))
 			)))
+
+(defn get-entries []
+  (select entry))
