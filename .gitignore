@@ -15,3 +15,13 @@ timesheet-server/.lein-plugins
 timesheet-server/.lobos_stash.clj
 timesheet-server/.lein-repl-history
 timesheet-server/target/
+timesheet-server/.nrepl-port
+
+timesheet-client/pom.xml
+timesheet-client/lib/
+timesheet-client/classes/
+timesheet-client/out/
+timesheet-client/target/
+timesheet-client/.lein-deps-sum
+timesheet-client/.lein-repl-history
+timesheet-client/.lein-plugins/
