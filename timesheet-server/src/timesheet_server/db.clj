@@ -37,7 +37,7 @@
 (defn entity-fields-from-table-def
   [ent table-def]
   (let [col-names (map (fn [col-def] (first col-def))
-                       (rest (get table-def :columns)))]
+                       (rest (:columns table-def)))]
     (apply entity-fields (conj col-names ent))))
 
 (defentity entry
@@ -78,9 +78,9 @@
 	(let [timesheet-text-file (slurp text-file-path)]
 		(let [text-file-date-entries
           (filter (fn [entry] (not (= entry "")))
-                  (string/split (get
-                                 (string/split timesheet-text-file #"\n\f\f\n") 0 nil)
-                                #"\f"))]
+                  (string/split
+                   ((string/split timesheet-text-file #"\n\f\f\n") 0)
+                   #"\f"))]
 		  (doseq [text-file-date-entry text-file-date-entries]
         (store-text-file-date-entry text-file-date-entry ))
 			)))
