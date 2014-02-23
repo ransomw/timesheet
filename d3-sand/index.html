@@ -1,0 +1,18 @@
+<!doctype html>
+
+<html lang="en">
+	<head>
+		<script src="lib/require-2.1.11.js"></script>
+		<script>
+		require(['require-config.js'],
+						function(common) {
+								require(["hours-chart"], function(module) {
+										module.plot_chart();
+								});
+						});
+		</script>
+	</head>
+<body>
+	<div id="data-chart"></div>
+</body>
+</html>
