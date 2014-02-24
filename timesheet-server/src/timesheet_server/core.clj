@@ -12,5 +12,9 @@
 
 (defroutes app
 	(GET "/" [] "<h1>Hello World</h1>")
-  (GET "/entries" [] (cheshire/generate-string (db/get-entries)))
+  (GET "/entries" []
+       {:status 200
+        :headers {"Content-Type" "application/json"}
+        :body (cheshire/generate-string (db/get-entries))}
+       )
 	(route/not-found "<h1>Page not found</h1>"))
