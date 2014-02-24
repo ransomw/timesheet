@@ -6,15 +6,19 @@
   (:require [compojure.route :as route])
   (:require [timesheet-server.db :as db])
   (:require [cheshire.core :as cheshire])
+  (:require [ring.middleware.jsonp :as jsonp])
   )
 
 (db/load-text-file "/tmp/timesheet.txt")
 
+;(jsonp/wrap-json-with-padding
+
 (defroutes app
 	(GET "/" [] "<h1>Hello World</h1>")
   (GET "/entries" []
-       {:status 200
-        :headers {"Content-Type" "application/json"}
-        :body (cheshire/generate-string (db/get-entries))}
+       (cheshire/generate-string (db/get-entries))
+       ;; {:status 200
+       ;;  :headers {"Content-Type" "application/json"}
+       ;;  :body (cheshire/generate-string (db/get-entries))}
        )
 	(route/not-found "<h1>Page not found</h1>"))
