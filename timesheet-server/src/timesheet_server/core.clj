@@ -9,7 +9,9 @@
   (:require [ring.middleware.jsonp :as jsonp])
   )
 
-(db/load-text-file "/tmp/timesheet.txt")
+(try (db/load-text-file "/tmp/timesheet.txt")
+     (catch java.io.FileNotFoundException e
+       (prn "couldn't load timesheet from text file")))
 
 ;(jsonp/wrap-json-with-padding
 
