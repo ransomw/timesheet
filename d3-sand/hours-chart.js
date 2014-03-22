@@ -29,8 +29,8 @@ define([
 				httpRequest.onload = reqListener;
 				httpRequest.onreadstatechange = onReadyStateChangeListener;
 				// httpRequest.open('GET', entries_url, true);
-				// httpRequest.open('GET', entries_url);
-				httpRequest.open('GET', 'test.html');
+				httpRequest.open('GET', entries_url);
+				// httpRequest.open('GET', 'test.html');
 				// httpRequest.overrideMimeType("application/json");
 				// httpRequest.send(null);
 				httpRequest.send();

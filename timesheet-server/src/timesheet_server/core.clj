@@ -7,6 +7,7 @@
   (:require [timesheet-server.db :as db])
   (:require [cheshire.core :as cheshire])
   (:require [ring.middleware.jsonp :as jsonp])
+  (:require [clojure.string :as string])
   )
 
 (try (db/load-text-file "/tmp/timesheet.txt")
@@ -14,6 +15,15 @@
        (prn "couldn't load timesheet from text file")))
 
 ;(jsonp/wrap-json-with-padding
+;; (System/getProperty "user.dir")
+
+(def d3-sand-root-dir
+  (string/join "/"
+               (list
+                (System/getProperty "user.dir")
+                ".."
+                "d3-sand"))
+  )
 
 (defroutes app
 	(GET "/" [] "<h1>Hello World</h1>")
@@ -23,4 +33,5 @@
        ;;  :headers {"Content-Type" "application/json"}
        ;;  :body (cheshire/generate-string (db/get-entries))}
        )
+  (route/files "/d3-sand" {:root d3-sand-root-dir})
 	(route/not-found "<h1>Page not found</h1>"))
