@@ -25,6 +25,14 @@
                 "d3-sand"))
   )
 
+(def client-root-dir
+  (string/join "/"
+               (list
+                (System/getProperty "user.dir")
+                ".."
+                "timesheet-client"))
+  )
+
 (defroutes app
 	(GET "/" [] "<h1>Hello World</h1>")
   (GET "/entries" []
@@ -34,4 +42,5 @@
        ;;  :body (cheshire/generate-string (db/get-entries))}
        )
   (route/files "/d3-sand" {:root d3-sand-root-dir})
+  (route/files "/client" {:root client-root-dir})
 	(route/not-found "<h1>Page not found</h1>"))

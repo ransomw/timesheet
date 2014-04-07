@@ -25,3 +25,4 @@ timesheet-client/target/
 timesheet-client/.lein-deps-sum
 timesheet-client/.lein-repl-history
 timesheet-client/.lein-plugins/
+timesheet-client/timesheet_client.js
