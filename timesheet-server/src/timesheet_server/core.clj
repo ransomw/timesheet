@@ -36,11 +36,17 @@
 (defroutes app
 	(GET "/" [] "<h1>Hello World</h1>")
   (GET "/entries" []
-       (cheshire/generate-string (db/get-entries))
-       ;; {:status 200
-       ;;  :headers {"Content-Type" "application/json"}
-       ;;  :body (cheshire/generate-string (db/get-entries))}
+       ;; (cheshire/generate-string (db/get-entries))
+       {:status 200
+        :headers {"Content-Type" "application/json"}
+        :body (cheshire/generate-string (db/get-entries))}
        )
   (route/files "/d3-sand" {:root d3-sand-root-dir})
   (route/files "/client" {:root client-root-dir})
+  (GET "/client/entries" []
+       ;; (cheshire/generate-string (db/get-entries))
+       {:status 200
+        :headers {"Content-Type" "application/json"}
+        :body (cheshire/generate-string (db/get-entries))}
+       )
 	(route/not-found "<h1>Page not found</h1>"))
