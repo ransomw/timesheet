@@ -15,7 +15,8 @@ define([
  * to false
  */
 		function plot_chart() {
-				var entries_url = 'http://localhost:3000/entries';
+				// var entries_url = 'http://localhost:3000/entries';
+                var entries_url = 'entries';
 				var httpRequest;
 
 				function reqListener () {

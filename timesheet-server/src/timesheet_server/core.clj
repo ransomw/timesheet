@@ -42,6 +42,8 @@
         :body (cheshire/generate-string (db/get-entries))}
        )
   (route/files "/d3-sand" {:root d3-sand-root-dir})
+   (GET "/d3-sand/entries" []
+       (cheshire/generate-string (db/get-entries)))
   (route/files "/client" {:root client-root-dir})
   (GET "/client/entries" []
        ;; (cheshire/generate-string (db/get-entries))
